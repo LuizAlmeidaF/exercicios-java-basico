@@ -59,5 +59,17 @@ public class ContaBancaria {
         System.out.println(String.format("Seu saldo atual é: %s sendo %s de saldo da conta e %s de cheque especial.\n", num2, num1, ce));
     }
 
+    double depositar(double num1, double num2){
+        double total = num1 + num2;
+        System.out.println(String.format("Seu depósito de %s foi realizado.", num1));
+        return  total;
+    }
+
+    double sacarDinheiro(double saque, double saldo){
+        double total = saldo - saque;
+        System.out.println("Você realizou seu saque com sucesso! \n Saldo atual: " + total);
+        return total;
+    }
+
 
 }

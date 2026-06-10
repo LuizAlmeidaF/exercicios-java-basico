@@ -8,21 +8,16 @@ public class Main {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main (String[] args) {
-        String nome;
-        String conta;
-        String agencia;
-        double saldo;
         
-
         System.out.println("Olá sejá bem vindo, vamos criar sua conta bancaria?");
         System.out.println("Qual o seu nome?");
-        nome = scanner.next();
+        String nome = scanner.next();
         System.out.println("Qual o número da sua conta?");
-        conta = scanner.next();
+        String conta = scanner.next();
         System.out.println("Qual a sua agência?");
-        agencia = scanner.next();
+        String agencia = scanner.next();
         System.out.println("Quanto você quer colocar na conta ao criar ela?");
-        saldo = scanner.nextDouble();
+        double saldo = scanner.nextDouble();
         boolean continuar = true;
         ContaBancaria contaBancaria = null;
 
@@ -66,10 +61,14 @@ public class Main {
                     System.out.println(String.format("Seu cheque especial atualmente é: %s\n", contaBancaria.chequeEspecial(saldo)));
                 }
                 case DEPOSIT -> {
-
+                    System.out.println("Quando você quer depósitar?");
+                    double valorDeposito = scanner.nextDouble();
+                    contaBancaria.saldo = contaBancaria.depositar(valorDeposito, saldo);
                 }
                 case DRAW_SOME_MONEY -> {
-
+                    System.out.println("Quando você deseja sacar?");
+                    double saque = scanner.nextDouble();
+                    contaBancaria.saldo = contaBancaria.sacarDinheiro(saque, saldo);
                 }
                 case PAY -> {
 
