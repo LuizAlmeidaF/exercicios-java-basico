@@ -6,7 +6,7 @@ public class ContaBancaria {
     String agencia;
     double saldo;
 
-
+    
     public String getName() {
         return name;
     }
@@ -41,12 +41,12 @@ public class ContaBancaria {
 
     double chequeEspecial(double saldo){
         double valorCEspecial;
-        if (saldo <= 500.0){
+
+        if (saldo <= 500.0) {
             valorCEspecial = 50.0;
-        }else{
+        } else {
             valorCEspecial = saldo * 0.5;
-        }
-        return valorCEspecial;
+        }return valorCEspecial;
     }
 
     double saldoReal(double num1, double num2){
@@ -70,6 +70,27 @@ public class ContaBancaria {
         System.out.println("Você realizou seu saque com sucesso! \n Saldo atual: " + total);
         return total;
     }
+
+    double pagarBoleto(double valorBoleto, double saldo) {
+        double total = saldo - valorBoleto;
+        System.out.println("O pagamento do seu boleto foi foito!");
+        return total;
+    }
+
+    final double valorChequeEspecial = chequeEspecial(saldo);
+
+    boolean usoCheque (double chequeEspecial) {
+        if (chequeEspecial < valorChequeEspecial) {
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
+
+
+
 
 
 }

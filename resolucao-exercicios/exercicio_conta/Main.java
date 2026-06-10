@@ -7,6 +7,7 @@ public class Main {
 
     static Scanner scanner = new Scanner(System.in);
 
+
     public static void main (String[] args) {
         
         System.out.println("Olá sejá bem vindo, vamos criar sua conta bancaria?");
@@ -71,9 +72,17 @@ public class Main {
                     contaBancaria.saldo = contaBancaria.sacarDinheiro(saque, contaBancaria.saldo);
                 }
                 case PAY -> {
-
+                    System.out.println("Qual o valor do boleto que você precisa pagar?");
+                    double valorBoleto = scanner.nextDouble();
+                    contaBancaria.saldo = contaBancaria.pagarBoleto(valorBoleto, contaBancaria.saldo);
                 }
                 case VERIFY_OVERDRAFT -> {
+                    if (contaBancaria.usoCheque(contaBancaria.chequeEspecial(saldo))){
+                        System.out.println("Você está utilizando o cheque especial");
+                    }else{
+                        System.out.println("======");
+                    }
+
 
                 }
                 case EXIT -> System.exit(0);
