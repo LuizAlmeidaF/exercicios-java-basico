@@ -1,13 +1,11 @@
 package exercicio_conta;
 
-;
-
 public class ContaBancaria {
     String name;
     String conta;
     String agencia;
     double saldo;
-    double saldoReal = saldo + chequeEspecial(saldo);
+
 
     public String getName() {
         return name;
@@ -51,9 +49,14 @@ public class ContaBancaria {
         return valorCEspecial;
     }
 
+    double saldoReal(double num1, double num2){
+        return num1 + num2;
+    }
+
     void consultarSaldo(double num1, double num2){
+
         double ce = num2 - num1;
-        System.out.println(String.format("Seu saldo atual é: %s sendo %s de saldo da conta e %s de cheque especial.", num2, num1, ce));
+        System.out.println(String.format("Seu saldo atual é: %s sendo %s de saldo da conta e %s de cheque especial.\n", num2, num1, ce));
     }
 
 

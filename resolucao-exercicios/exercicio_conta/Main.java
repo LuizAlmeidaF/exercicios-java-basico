@@ -1,7 +1,6 @@
 package exercicio_conta;
 import exercicio_conta.model.CreateOption;
 import exercicio_conta.model.MenuOption;
-
 import java.util.Scanner;
 
 public class Main {
@@ -13,6 +12,7 @@ public class Main {
         String conta;
         String agencia;
         double saldo;
+        
 
         System.out.println("Olá sejá bem vindo, vamos criar sua conta bancaria?");
         System.out.println("Qual o seu nome?");
@@ -23,8 +23,10 @@ public class Main {
         agencia = scanner.next();
         System.out.println("Quanto você quer colocar na conta ao criar ela?");
         saldo = scanner.nextDouble();
+        boolean continuar = true;
+        ContaBancaria contaBancaria = null;
 
-        while (true) {
+        while (continuar) {
             System.out.println("Deseja criar a conta com base nessas informações?");
             System.out.println("1 - Criar");
             System.out.println("2 - Sair");
@@ -32,15 +34,16 @@ public class Main {
             var selectedOption = CreateOption.values()[userInput -1];
             switch (selectedOption){
                 case CREATE -> {
-                    ContaBancaria contaBancaria = new ContaBancaria();
+                    contaBancaria = new ContaBancaria();
                     contaBancaria.setName(nome);
                     contaBancaria.setConta(conta);
                     contaBancaria.setAgencia(agencia);
                     contaBancaria.setSaldo(saldo);
                     System.out.println(String.format("A conta de %s foi criada.", contaBancaria.getName()));
+                    continuar = false;
                 }
                 case EXIT -> System.exit(0);
-            }break;
+            }
         }
         while(true) {
             System.out.println("Qual operação deseja realizar?");
@@ -53,6 +56,29 @@ public class Main {
             System.out.println("7 - Sair");
             var userInput = scanner.nextInt();
             var selectedOption = MenuOption.values()[userInput -1];
+            switch (selectedOption){
+                case CONSULT_BALANCE -> {
+                    contaBancaria.consultarSaldo(contaBancaria.getSaldo(),
+                     contaBancaria.saldoReal(contaBancaria.getSaldo(),
+                      contaBancaria.chequeEspecial(saldo)));
+                }
+                case CONSULT_OVERDRAFT -> {
+                    System.out.println(String.format("Seu cheque especial atualmente é: %s\n", contaBancaria.chequeEspecial(saldo)));
+                }
+                case DEPOSIT -> {
+
+                }
+                case DRAW_SOME_MONEY -> {
+
+                }
+                case PAY -> {
+
+                }
+                case VERIFY_OVERDRAFT -> {
+
+                }
+                case EXIT -> System.exit(0);
+            }
         }
     }
 }
