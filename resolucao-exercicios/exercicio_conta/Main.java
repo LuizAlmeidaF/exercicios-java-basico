@@ -68,7 +68,7 @@ public class Main {
                 case DRAW_SOME_MONEY -> {
                     System.out.println("Quando você deseja sacar?");
                     double saque = scanner.nextDouble();
-                    contaBancaria.saldo = contaBancaria.sacarDinheiro(saque, saldo);
+                    contaBancaria.saldo = contaBancaria.sacarDinheiro(saque, contaBancaria.saldo);
                 }
                 case PAY -> {
 
