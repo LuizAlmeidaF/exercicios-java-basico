@@ -77,15 +77,11 @@ public class ContaBancaria {
         return total;
     }
 
-    final double valorChequeEspecial = chequeEspecial(saldo);
-
-    boolean usoCheque (double chequeEspecial) {
-        if (chequeEspecial < valorChequeEspecial) {
+    boolean verificarUsoChequeEspecial(double saldoAtual) {
+        if (saldoAtual < 0) {
             return true;
-        }else{
-            return false;
         }
-
+        return false;
     }
 
 

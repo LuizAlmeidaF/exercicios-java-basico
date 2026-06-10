@@ -77,13 +77,11 @@ public class Main {
                     contaBancaria.saldo = contaBancaria.pagarBoleto(valorBoleto, contaBancaria.saldo);
                 }
                 case VERIFY_OVERDRAFT -> {
-                    if (contaBancaria.usoCheque(contaBancaria.chequeEspecial(saldo))){
+                    if (contaBancaria.verificarUsoChequeEspecial(contaBancaria.getSaldo())){
                         System.out.println("Você está utilizando o cheque especial");
                     }else{
-                        System.out.println("======");
+                        System.out.println("Você NÃO está utilizando o cheque especial");
                     }
-
-
                 }
                 case EXIT -> System.exit(0);
             }
